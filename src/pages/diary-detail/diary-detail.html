@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-buttons padding end>
+      <button class="close-button" ion-button icon-only (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <ion-input class="diary-month" text-center readonly value={{diary.month}}></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-input class="diary-date" text-center readonly value={{diary.date}}></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input class="diary-day" text-right readonly value="{{diary.day | chineseDay:'medium'}}"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input class="diary-time" text-left readonly value={{diary.time}}></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines>
+    <ion-input class="diary-title" type="text" value={{diary.title}}
+      text-center readonly 
+      [class.male]="theme==='male'"
+      [class.female]="theme==='female'">
+    </ion-input>
+  </ion-item>
+  <ion-item no-lines>
+    <ion-textarea value={{diary.content}} readonly>
+    </ion-textarea>
+  </ion-item>
+
+  <ion-fab class="fab-weather" right top edge #fabWeather>
+    <button ion-fab mini color="light">
+      <ion-icon color={{theme}} name="ios-{{diary.weather || 'sunny'}}"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab class="fab-mood" right top edge #fabMood>
+    <button ion-fab mini color="light">
+      <img height="24" width="24" src="assets/img/{{theme || 'male'}}-{{diary.mood || 'happy'}}.svg">
+    </button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} (click)="updateDiary(diaryId, diary)" ion-button icon-only>
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} (click)="deleteDiary(diaryId)" ion-button icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

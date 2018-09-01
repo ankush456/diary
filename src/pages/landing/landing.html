@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="diary">
+    <ion-title>{{ "LANDING_TITLE" | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="landing">
+  <div class="img-container">
+    <img class="landing-img" src="assets/img/ionic01.png">
+  </div>
+  <form novalidate>
+    <button color="diary" ion-button block (click)="goToLogin()">
+      {{ 'LANDING.LOGIN' | translate }}
+    </button>
+    <button color="diary" ion-button block (click)="goToSignup()">
+      {{ 'LANDING.SIGNUP' | translate }}
+    </button>
+  </form>
+
+  <button color="diary" class="button-text" ion-button block clear (click)="goToAnonymousLogin()">
+  {{ 'LANDING.ANONYMOUS_LOGIN' | translate }}
+  </button>
+</ion-content>

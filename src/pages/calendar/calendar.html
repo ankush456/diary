@@ -1,0 +1,29 @@
+<ion-navbar color="clean">
+  <ion-row>
+    <ion-col>
+      <ion-input class="diary-month"
+        [class.male]="_theme==='male'"
+        [class.female]="_theme==='female'"
+        text-center readonly value={{month}}>
+      </ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col>
+      <ion-input class="diary-date"
+        [class.male]="_theme==='male'"
+        [class.female]="_theme==='female'"
+        text-center readonly value={{date}}>
+      </ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-input class="diary-day"
+        [class.male]="_theme==='male'"
+        [class.female]="_theme==='female'"
+        text-center readonly value={{day}}>
+      </ion-input>
+    </ion-col>
+  </ion-row>
+</ion-navbar>

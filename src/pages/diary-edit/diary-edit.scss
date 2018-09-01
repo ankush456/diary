@@ -1,0 +1,50 @@
+page-diary-edit {
+  ion-navbar {
+    height: 110px;
+
+    .close-button {
+      transform: translate(12px, -35px);
+    }
+    .diary-month {
+      font-size: 18px;
+      color: color($colors, clean);
+      transform: translate(33px, 35px);
+    }
+    .diary-date {
+      font-size: 50px;
+      color: color($colors, clean);
+      transform: translate(33px, -3px);
+    }
+    .diary-day {
+      font-size: 13px;
+      color: color($colors, clean);
+      transform: translate(30px, -39px);
+    }
+    .diary-time {
+      font-size: 13px;
+      color: color($colors, clean);
+      transform: translate(30px, -39px);
+    }
+  }
+  textarea.text-input {
+    padding-bottom: 12px;
+  }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
+  }
+  .invalid {
+    border-bottom: 1px solid color($colors, danger);
+  }
+  .error-message p {
+    color: color($colors, danger);
+  }
+  .error-message .item-inner {
+    border-bottom: 0 !important;
+  }
+  .fab-weather {
+    transform: translate(5px, 0);
+  }
+  .fab-mood {
+    transform: translate(-45px, 0);
+  }
+}

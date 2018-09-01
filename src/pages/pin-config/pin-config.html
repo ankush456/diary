@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title>{{ 'PIN_CONFIG_PAGE.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-row>
+      <ion-col>
+        <h2>{{ 'PIN_CONFIG_PAGE.COL_SETTING' | translate }}</h2>
+      </ion-col>
+      <ion-col>
+        <ion-buttons end>
+          <button color={{theme}} *ngIf="!enableLock" ion-button clear (click)="addPin()">{{ 'PIN_CONFIG_PAGE.COL_ENABLE' | translate }}</button>
+          <button color={{theme}} *ngIf="enableLock" ion-button clear (click)="removePin()">{{ 'PIN_CONFIG_PAGE.COL_DISABLE' | translate }}</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>

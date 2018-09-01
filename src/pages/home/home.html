@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-item color={{theme}} no-lines>
+      <ion-avatar item-left>
+        <img src="{{userAvatar}}">
+      </ion-avatar>
+      <h1 class="user-name">{{userName}}</h1>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item tabbable detail-push (click)="goToDiary()">
+      <ion-icon color={{theme}} name="ios-book-outline" item-left></ion-icon>
+      <h2>{{ "HOME.DIARY" | translate }}</h2>
+    </ion-item>
+    <ion-item tabbable detail-push (click)="goToContact()">
+      <ion-icon color={{theme}} name="ios-call-outline" item-left></ion-icon>
+      <h2>{{ "HOME.CONTACT" | translate }}</h2>
+    </ion-item>
+    <ion-item tabbable detail-push (click)="goToMemo()">
+      <ion-icon color={{theme}} name="ios-alert-outline" item-left></ion-icon>
+      <h2>{{ "HOME.MEMO" | translate }}</h2>
+    </ion-item> 
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row align-items-center>
+        <ion-col width-20>
+          <button color={{clean}} ion-button icon-only menuToggle>
+            <ion-icon name="md-menu"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only *ngIf="!musicPlayed" (click)="playMusic()">
+            <ion-icon name="md-play"></ion-icon>
+          </button>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only *ngIf="musicPlayed" (click)="stopMusic()">
+            <ion-icon name="md-square"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

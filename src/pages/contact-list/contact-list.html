@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color={{theme}} no-border-bottom>
+    <ion-title>{{ 'CONTACT_LIST.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+  <ion-toolbar color={{theme}} no-border-top>
+    <ion-searchbar class="contact-searchbar" (ionInput)="searchContact($event)"
+                   placeholder="{{ 'CONTACT_LIST.SEARCH' | translate }}" showCancelButton=true cancelButtonText="{{ 'CONTACT_LIST.CANCEL' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let contact of contactList | async">
+      <ion-item tabbable (click)="showContactDetail(contact.$key)">
+        <ion-avatar item-left>
+          <ion-icon color={{theme}} class="icon-avatar" name="contacts"></ion-icon>
+        </ion-avatar>
+        <h2 class="contact-name">{{contact.name}}</h2>
+        <p class="phone-no">{{contact.phone}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only color="cloud" (click)="updateContact(contact.$key, contact, slidingItem)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="deleteContact(contact.$key, slidingItem)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row align-items-center>
+        <ion-col width-20>
+          <button color={{clean}} ion-button icon-only menuToggle>
+            <ion-icon name="md-menu"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only (click)="createContact()">
+            <ion-icon name="md-add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

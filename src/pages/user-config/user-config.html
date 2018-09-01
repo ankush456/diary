@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title>{{ 'CONFIG.TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines>
+    <ion-row justify-content-center>
+      <ion-avatar tappable>
+        <img class="avatar-img" src="{{userAvatar}}" (click)="chooseAvatar()">
+      </ion-avatar>
+    </ion-row>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{ 'CONFIG.NAME.LABEL' | translate }}</ion-label>
+    <ion-input text-right type="text" placeholder="{{ 'CONFIG.NAME.PROMPT' | translate }}" [(ngModel)]="userName">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{ 'CONFIG.GENDER.LABEL' | translate }}</ion-label>
+    <ion-select [(ngModel)]="userGender" okText="{{ 'CONFIG.OK' | translate }}" cancelText="{{ 'CONFIG.CANCEL' | translate }}" interface="action-sheet">
+      <ion-option value="male">{{ "CONFIG.GENDER.MALE" | translate }}</ion-option>
+      <ion-option value="female">{{ "CONFIG.GENDER.FEMALE" | translate }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button color={{theme}} ion-button block (click)="updateSettings();">{{ 'CONFIG.CONFIRM' | translate }}</button>
+</ion-content>

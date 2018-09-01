@@ -1,0 +1,31 @@
+<ion-menu id="sideMenu" side="left" [content]="content">
+  <ion-header>
+    <ion-toolbar color="cloud">
+      <ion-title>{{ "TITLE" | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+    <ion-list>
+      <ion-list-header class="menu-header"><h3>{{ "ENV" | translate }}</h3></ion-list-header>
+      <button ion-item menuClose *ngFor="let page of settingPages" (click)="openPage(page)">
+        <ion-icon item-left [name]="page.icon"></ion-icon>
+        {{page.title}}
+      </button>
+
+      <ion-list-header class="menu-header"><h3>{{ "MISC" | translate }}</h3></ion-list-header>
+      <button ion-item menuClose *ngFor="let page of otherPages" (click)="openPage(page)">
+        <ion-icon item-left [name]="page.icon"></ion-icon>
+        {{page.title}}
+      </button>
+
+      <ion-list-header class="menu-header"><h3>{{ "ACCOUNT" | translate }}</h3></ion-list-header>
+      <button ion-item menuClose *ngFor="let page of accountPages" (click)="openPage(page)">
+        <ion-icon item-left [name]="page.icon"></ion-icon>
+        {{page.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

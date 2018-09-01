@@ -1,0 +1,14 @@
+page-memo-list {
+  .memo-list-searchbar {
+    margin-top: -10px;
+  }
+  .input-wrapper {
+    height: 63px;
+  }
+  .rightmost-button {
+    transform: translate(10px, 0);
+  }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
+  }
+}

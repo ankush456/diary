@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title>{{modeDesc}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="memoForm" novalidate>
+    <ion-item>
+      <ion-label stacked>{{ 'MEMO_EDIT.LABEL' | translate }}</ion-label>
+      <ion-input #title formControlName="title" type="text" placeholder="{{ 'MEMO_EDIT.INPUT_MEMO_TITLE' | translate }}"
+        (change)="elementChanged(title)" [class.invalid]="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
+      <p>{{ 'MEMO_EDIT.ERR_MSG' | translate }}</p>
+    </ion-item>
+  </form>  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-10 offset-80>
+          <button color={{theme}} type="button" (click)="editMemo()" ion-button icon-only>
+            <ion-icon name="md-checkmark"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

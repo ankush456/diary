@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title>{{ 'CONTACT_DETAIL.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-left>
+          <ion-icon color={{theme}} class="icon-avatar" name="contacts"></ion-icon>
+        </ion-avatar>
+        <h1 class="contact-name">{{contact.name}}</h1>
+        <p class="contact-phone">{{contact.phone}}</p>
+      </ion-item>
+
+      <ion-buttons end>
+        <button color={{theme}} class="sms-button" (click)="sendSms(contact.phone)"
+                ion-button icon-only round>
+          <ion-icon name="chatboxes"> {{ 'CONTACT_DETAIL.MESSAGES' | translate }}</ion-icon>
+        </button>
+        <button color={{theme}} class="phone-button" (click)="dial(contact.phone)"
+                ion-button icon-only round>
+          <ion-icon name="call"> {{ 'CONTACT_DETAIL.PHONE' | translate }}</ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} (click)="updateContact(contactId, contact)" ion-button icon-only>
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} (click)="deleteContact(contactId)" ion-button icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

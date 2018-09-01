@@ -1,0 +1,62 @@
+<ion-card *ngFor="let diary of _diaryList | async">
+  <ion-list>
+    <ion-item-sliding #slidingItem>
+      <ion-item tappable (click)="showDiaryDetail(diary.$key)">
+        <div class="diary-div-left" item-left text-center>
+          <h1 class="diary-date"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.date}}
+          </h1>
+          <h3 class="diary-day"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.day | chineseDay:'medium'}}
+          </h3>
+        </div>
+        <div class="diary-div-main">
+          <h3 class="diary-time"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.time}}
+          </h3>
+          <h2 class="diary-title"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.title}}
+          </h2>
+          <h3 class="diary-content">{{diary.content}}</h3>
+        </div>  
+        <div class="diary-div-right" item-right>
+          <div>
+            <img class="diary-img" src="assets/img/{{_theme || 'male'}}-{{diary.mood || 'happy'}}.svg">
+            <ion-icon class="diary-icon"
+              [class.male]="_theme==='male'"
+              [class.female]="_theme==='female'" 
+              name="ios-{{diary.weather || 'sunny'}}">
+            </ion-icon>
+            <ion-icon class="diary-icon"
+              [class.male]="_theme==='male'"
+              [class.female]="_theme==='female'" 
+              name="ios-bookmark-outline">
+            </ion-icon>
+          </div>
+          <ion-icon class="diary-attach"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'"
+            name="ios-attach-outline">
+          </ion-icon>
+        </div>
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button icon-only color="cloud" (click)="updateDiary(diary.$key, diary, slidingItem)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="deleteDiary(diary.$key, slidingItem)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>  
+  </ion-list>
+</ion-card>

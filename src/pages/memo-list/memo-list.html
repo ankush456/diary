@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color={{theme}} no-border-bottom>
+    <ion-title>{{ 'MEMO_LIST.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+  <ion-toolbar color={{theme}} no-border-top>
+    <ion-searchbar class="memo-list-searchbar" (ionInput)="searchMemo($event)"
+                   placeholder="{{ 'MEMO_LIST.SEARCH' | translate }}" showCancelButton=true cancelButtonText="{{ 'MEMO_LIST.CANCEL' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let memo of memoList | async">
+      <ion-item tabbable (click)="showMemoDetail(memo.$key)">
+        <ion-icon color={{theme}} name="ios-list-box-outline" item-left ></ion-icon>
+        <h2>{{memo.title}}</h2>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only color="cloud" (click)="updateMemo(memo.$key, memo.title, slidingItem)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="deleteMemo(memo.$key, slidingItem)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row align-items-center>
+        <ion-col width-20>
+          <button color={{clean}} ion-button icon-only menuToggle>
+            <ion-icon name="md-menu"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only (click)="createMemo()">
+            <ion-icon name="md-add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

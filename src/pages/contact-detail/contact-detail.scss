@@ -1,0 +1,18 @@
+page-contact-detail {
+  ion-toolbar.footer-toolbar {
+    height: 50px;
+  }
+  p.contact-phone {
+    font-size: 16px;
+  }
+  .phone-button, .sms-button {
+    font-size: 11px;
+    transform: translate(-5px, -5px);
+  }
+  .contact-name, .contact-phone {
+    transform: translate(0, 2px);
+  }
+  .item-ios ion-avatar .icon-avatar {
+    font-size: 64px;
+  }
+}

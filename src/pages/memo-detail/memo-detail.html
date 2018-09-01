@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title >{{memo.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let item of itemList | async">
+    <ion-label [class.checked-item]="item.checked">{{item.entry}}</ion-label>
+    <ion-checkbox color={{theme}} [checked]="item.checked" (click)="toggleItem(item.$key, item)"></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="createMode">
+    <ion-input type="text" placeholder="{{ 'MEMO_DETAIL.NEW_ENTRY' | translate }}" [(ngModel)]="entry"
+      (keyup)="entryChange()" [class.invalid]="!entryValid && (entryChanged || submitAttempt)">
+    </ion-input>
+  </ion-item>
+  <ion-item class="error-message" *ngIf="!entryValid && (entryChanged || submitAttempt)">
+    <p>{{ 'MEMO_DETAIL.ERR_MSG' | translate }}</p>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color={{theme}} class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20 *ngIf="!createMode">
+          <button color={{theme}} (click)="toggleCreateMode()" ion-button icon-only>
+            <ion-icon name="md-add"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20 *ngIf="!createMode">
+          <button color={{theme}} (click)="updateItem()" ion-button icon-only>
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20 *ngIf="!createMode">
+          <button color={{theme}} (click)="deleteAllItems()" ion-button icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col width-20 *ngIf="createMode">
+        </ion-col>
+        <ion-col width-20 *ngIf="createMode">
+          <button color={{theme}} (click)="reset()"ion-button icon-only>
+            <ion-icon name="md-refresh"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20 *ngIf="createMode">
+          <button color={{theme}} (click)="createItem()" ion-button icon-only>
+            <ion-icon name="md-checkmark"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
